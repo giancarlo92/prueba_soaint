@@ -1,0 +1,45 @@
+<div class="form">
+  <div class="p-field">
+    <label for="about">About</label>
+    <input id="about" type="text" aria-describedby="about-help" pInputText [(ngModel)]="respuesta.about" />
+  </div>
+  <div class="p-field">
+    <label for="access">Access URL</label>
+    <input id="access" type="text" aria-describedby="access-help" pInputText [(ngModel)]="respuesta.accessURL" />
+  </div>
+  <div class="p-field">
+    <label for="title">Title</label>
+    <input id="title" type="text" aria-describedby="title-help" pInputText [(ngModel)]="respuesta.title" />
+  </div>
+  <p-button type="button" icon="pi pi-check" styleClass="p-button-text" (click)="GuardarRespuesta()">Guardar</p-button>
+</div>
+
+<div class="card">
+  <p-table [value]="respuestas" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" 
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,25,50]">
+      <ng-template pTemplate="header">
+          <tr>
+            <th>About</th>
+            <th>Acces URL</th>
+            <th>Title</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-respuesta let-rowIndex="rowIndex">
+          <tr>
+            <td>{{respuesta.about}}</td>
+            <td>{{respuesta.accessURL}}</td>
+            <td>{{respuesta.title}}</td>
+            <td>
+              <button (click)="EditarRespuesta(respuesta)">Editar</button>
+              <button (click)="EliminarRespuesta(respuesta.id)">Eliminar</button>
+            </td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="paginatorleft">
+          <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+      </ng-template>
+      <ng-template pTemplate="paginatorright">
+          <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+      </ng-template>
+  </p-table>
+</div>
