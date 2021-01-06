@@ -1,0 +1,21 @@
+<p-dialog [header]="appComponent.tituloModal" [(visible)]="appComponent.modal" [style]="{width: '25vw'}">
+    <div class="p-field">
+      <label for="about">About</label><br/>
+      <input type="text" pInputText id="about" [(ngModel)]="appComponent.respuesta.about" required autofocus [style]="{'width':'100%'}"/>
+      <small class="p-invalid" *ngIf="appComponent.submitted && !appComponent.respuesta.about">Este campo es obligatorio.</small>
+    </div>
+    <div class="p-field">
+      <label for="access">Access URL</label><br/>
+      <input type="text" pInputText id="access" [(ngModel)]="appComponent.respuesta.accessURL" required autofocus [style]="{'width':'100%'}"/>
+      <small class="p-invalid" *ngIf="appComponent.submitted && !appComponent.respuesta.accessURL">Este campo es obligatorio.</small>
+    </div>
+    <div class="p-field">
+      <label for="title">Title</label><br/>
+      <input type="text" pInputText id="title" [(ngModel)]="appComponent.respuesta.title" required autofocus [style]="{'width':'100%'}"/>
+      <small class="p-invalid" *ngIf="appComponent.submitted && !appComponent.respuesta.title">Este campo es obligatorio.</small>
+    </div>
+    <ng-template pTemplate="footer">
+      <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text" (click)="appComponent.CerrarModal()"></button>
+      <button pButton pRipple label="Guardar" icon="pi pi-check" class="p-button-text" (click)="appComponent.GuardarRespuesta()"></button>
+    </ng-template>
+</p-dialog>
